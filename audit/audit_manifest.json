@@ -1,0 +1,9 @@
+{
+  "package": "audit_package.json",
+  "package_sha256": "4c676f12fa0afe37342c7dd7d67d8b9724f8042b52db79b8e0a1c4756e07ea19",
+  "trades_merkle_root": "4ba9da5e906820fef0b8fd30832a96f3ab2fbe31733ba9c25fc66dd3a14fcda9",
+  "nav_merkle_root": "af3489e83f9f80f6af74019b5cc0e681eac64d2363a548206531212797347b59",
+  "data_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
+  "reference_sha256": "3631f7fed5600a7138e8e309f6b9cb594c05be3862d0a6ce9cd04b6ed02dc08e",
+  "code_commit": "23f1418"
+}
