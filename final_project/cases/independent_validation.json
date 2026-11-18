@@ -1,0 +1,44 @@
+{
+  "method": "从行情与配置独立计算信号及成交；模拟完成后才读取原账本比较",
+  "limitation": "复现现有引擎规则，非独立样本外或策略有效性验证；不等同完整Go测试",
+  "reference_sha256": "a998e7fa4928cbdcb3324048ed2c2e1dbf5ae892265a4d3b0d71abd79f3f3802",
+  "price_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
+  "cases": [
+    {
+      "case": "ma60",
+      "trades": 168,
+      "max_trade_errors": {
+        "qty": 0.0,
+        "price": 0.0,
+        "fee": 0.0,
+        "cash_after": 1.4551915228366852e-11
+      },
+      "max_daily_nav_error": 1.0913936421275139e-11,
+      "rejects": 0
+    },
+    {
+      "case": "ema20",
+      "trades": 390,
+      "max_trade_errors": {
+        "qty": 0.0,
+        "price": 0.0,
+        "fee": 0.0,
+        "cash_after": 1.6370904631912708e-11
+      },
+      "max_daily_nav_error": 7.275957614183426e-12,
+      "rejects": 0
+    },
+    {
+      "case": "williams14",
+      "trades": 172,
+      "max_trade_errors": {
+        "qty": 0.0,
+        "price": 0.0,
+        "fee": 0.0,
+        "cash_after": 1.8189894035458565e-11
+      },
+      "max_daily_nav_error": 7.275957614183426e-12,
+      "rejects": 0
+    }
+  ]
+}

@@ -37,7 +37,7 @@ for regime in ("上涨", "下跌", "震荡"):
 lines += ["## 怎样理解", "",
           "MA60 在近期下跌状态大多持有现金；EMA20 在该状态仍有少量持仓，价格变动贡献为负；Williams14 持仓更多，价格贡献为正。这些是账本中的差异，尚不能仅凭此表判断哪个信号有预测能力，或认定损益一定由某种交易行为造成。", "",
           "费用列是扣减。单位敞口指标把收益或费用之和除以每日开盘有效敞口之和；敞口很小时数值会被放大，卖出后当天无仓位也仍可能有费用。看原始日收益和有仓天数比只看这个比值更稳妥。", "",
-          "目前三组都完成成交账本重放、现金核对、费用与开盘价检查及每日净值损益对账。EMA20 和 Williams14 尚未用独立程序重算指标和下单逻辑；保存成交记录能复算账户，不等于已验证信号生成过程。", "",
+          "三组已完成账本与每日损益核对；另用 independent_replay.py 从行情独立计算指标、信号及交易，逐笔对齐结果见 independent_validation.json。计算一致性不等于独立样本外有效性，也不替代 Argo 构建版本与完整测试的复核。", "",
           "每个案例目录的 audit_package.json 保存交易与净值；case_summary.json 保存包哈希和对账误差。新包为 v2，记录了来源账本和配置指纹，哈希与原 MA60 v1 包不同；均尚未取得链上凭据。"]
 (BASE / "three_cases.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 (BASE / "three_cases.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

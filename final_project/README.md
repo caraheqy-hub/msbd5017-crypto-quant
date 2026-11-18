@@ -11,11 +11,14 @@
 ```powershell
 python -m pip install -r requirements.txt
 python final_project/build_cases.py
+python final_project/independent_replay.py
 ```
 
 脚本使用仓库里的原始成交文件，保留同时间戳内的成交顺序，逐笔核对现金、手续费和成交开盘价，再重建每日净值。随后为三个案例运行相同的市场状态分析，生成结果表。任何核对失败都会停止。
 
-这能复算成交之后的账户变化，尚未重跑 Argo 引擎或独立生成 EMA20/Williams14 信号。MA60 此前有独立 Python 参考实现对账；另外两个策略仍需补上这一层验证。
+第二条命令先从行情和配置独立计算三种指标、信号和成交，然后读取原账本比较。三组日期、币种、方向、数量、价格和费用逐笔一致，现金与每日净值误差小于 2e-11。结果在 `cases/independent_validation.json`；失败会报错退出。它不等同于重新编译运行 Argo 或执行完整 Go 测试。
+
+EMA20 采用当前 Argo 的具体初始化规则：历史不足 60 根时，退回最近 20 根的简单平均；历史达到 60 根后，从最近 60 根的前 20 根简单平均开始递推。这个有限窗口 EMA 与通常从整个历史持续递推的 EMA 可能不同。Williams14 用最近 14 根最高价和最低价计算 %R，低于 −80 买、高于 −20 卖。
 
 ## 目录
 
@@ -25,6 +28,7 @@ python final_project/build_cases.py
 | `input/ledgers/` | 三份原始成交账本、指标配置、引擎配置及策略源码快照 |
 | `build_cases.py` | 重放账本，生成 v2 审计包，再调用分析和汇总 |
 | `regime_analysis.py` | 同口径基准、状态划分、仓位与价格/费用拆分 |
+| `independent_replay.py` | 不读取成交结果生成信号与交易，之后与原账本及净值比较 |
 | `cases/{策略}/` | 各策略的审计包、汇总和逐日结果 |
 | `cases/summarize_cases.py` | 把三个分析 JSON 汇成可读表格 |
 | `input/reference_v2.py` | 最初 MA60 参考实现原件，含本机路径，供哈希追溯 |
@@ -46,4 +50,4 @@ python final_project/build_cases.py
 
 `cases/` 的 v2 包补入了指标、仓位参数和来源文件哈希，完整文件哈希与根目录 `audit/` 的 MA60 v1 包不同。重建后的 MA60 成交及净值 Merkle root 应仍与原包一致。三份 v2 包均未上链。
 
-引擎提交号在新包中标为历史记录所报版本，尚未从该提交在本仓库重新运行。保存源码和配置快照有助于追溯，但不等于已证明它们生成了原账本。下一步由 PR 2 补齐引擎版本和独立信号复核。
+引擎提交号在新包中标为历史记录所报版本，尚未从该提交在本仓库重新运行。Python 重放已对齐现有账本，但没有替代对引擎构建版本与 Go 测试的核实；由 PR 2 继续补齐。

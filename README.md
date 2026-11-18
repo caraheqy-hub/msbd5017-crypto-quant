@@ -22,6 +22,7 @@ MSBD5017 · Group 27 · HE Qiyuan、ZHANG Xinyue
 ```powershell
 python -m pip install -r requirements.txt
 python final_project/build_cases.py
+python final_project/independent_replay.py
 python audit/verify_local.py
 ```
 
@@ -39,6 +40,6 @@ scripts/                待接入 Hardhat 的上链、读链脚本
 archive/                早期实验、旧 PPT、旧报告和讨论记录
 ```
 
-三案例已完成账本复算、市场状态分析和 v2 审计包生成，支持换电脑运行。原 MA60 v1 包保留用于历史核对。Argo 改动及其他策略的独立信号重算还待复核；Hardhat 工程尚未整合，三个案例也尚无链上凭据。
+三案例已完成账本复算、独立 Python 信号与成交重放、市场状态分析及 v2 审计包生成，支持换电脑运行。独立对照结果在 `final_project/cases/independent_validation.json`。原 MA60 v1 包保留用于历史核对。Argo 修复版本仍需工程复跑；Hardhat 尚未整合，三个案例也尚无链上凭据。
 
 这个仓库是最终协作入口。同学原仓库中的合约和 Hardhat 工程通过 PR 接入这里。旧 PPT 位于历史目录，更新前请勿直接用于展示。
