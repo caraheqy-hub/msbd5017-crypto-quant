@@ -9,9 +9,9 @@
   "method": {
     "regime": "BTC收盘价[t-1]/BTC收盘价[t-31]-1；高于10%为上涨，低于-10%为下跌，其余震荡",
     "regime_status": "描述性分析；策略和阈值并非在独立样本外确定",
-    "benchmark": "初始资金BTC/ETH各50%，首根日线开盘买入，买入费10bp，此后持有；其敞口恒为100%",
+    "benchmark": "初始资金BTC/ETH各50%，首根日线开盘买入，买入费10bp，此后持有；其敞口接近100%",
     "strategy": "审计包audit_package.json中的MA60共享账户NAV",
-    "per_unit_exposure": "策略单位敞口日收益 = 策略平均日收益 / 平均收盘仓位；基准敞口100%，故其单位敞口日收益即基准平均日收益。该列用于区分「信号弱」与「仓位低」，仓位接近0时数值不稳定，仅作机制参考"
+    "per_unit_exposure": "策略单位敞口净收益=状态内每日净收益之和/每日开盘成交后有效敞口之和；价格收益与费用由逐笔账本重放并与每日NAV对账。基准资产权重与策略不同，单位敞口比较不是纯信号效应；低敞口状态数值不稳定"
   },
   "whole_period": {
     "strategy_return": 1.1428068688200002,
@@ -27,8 +27,13 @@
       "strategy_mean_daily_bps": 17.915505461297318,
       "benchmark_mean_daily_bps": 22.984005146626867,
       "active_mean_daily_bps": -5.068499685329549,
-      "strategy_mean_daily_bps_per_unit_exposure": 24.12508405992647,
-      "active_mean_daily_bps_per_unit_exposure": 1.1410789132996015,
+      "strategy_net_bps_per_unit_exposure": 24.13429387479308,
+      "strategy_mean_effective_open_exposure": 0.7423256530413372,
+      "strategy_invested_days": 444,
+      "strategy_mean_gross_price_daily_bps": 18.04224765104412,
+      "strategy_mean_fee_daily_bps": 0.12674218974678586,
+      "strategy_gross_price_bps_per_unit_exposure": 24.3050305174344,
+      "strategy_fee_bps_per_unit_exposure": 0.17073664264129648,
       "strategy_positive_day_share": 0.5123595505617977,
       "strategy_mean_close_exposure": 0.74260903782948
     },
@@ -38,8 +43,13 @@
       "strategy_mean_daily_bps": -0.0996474664656804,
       "benchmark_mean_daily_bps": 6.1825064084167956,
       "active_mean_daily_bps": -6.282153874882476,
-      "strategy_mean_daily_bps_per_unit_exposure": -6.54082516257365,
-      "active_mean_daily_bps_per_unit_exposure": -12.723331570990446,
+      "strategy_net_bps_per_unit_exposure": -6.544286910578139,
+      "strategy_mean_effective_open_exposure": 0.015226634746806557,
+      "strategy_invested_days": 11,
+      "strategy_mean_gross_price_daily_bps": 0.12392674590045055,
+      "strategy_mean_fee_daily_bps": 0.2235742123661384,
+      "strategy_gross_price_bps_per_unit_exposure": 8.138813858816793,
+      "strategy_fee_bps_per_unit_exposure": 14.683100769395422,
       "strategy_positive_day_share": 0.015197568389057751,
       "strategy_mean_close_exposure": 0.015234693481161882
     },
@@ -49,8 +59,13 @@
       "strategy_mean_daily_bps": 1.4713733824524566,
       "benchmark_mean_daily_bps": -1.521555293073017,
       "active_mean_daily_bps": 2.992928675525474,
-      "strategy_mean_daily_bps_per_unit_exposure": 4.2474277084512275,
-      "active_mean_daily_bps_per_unit_exposure": 5.768983001524244,
+      "strategy_net_bps_per_unit_exposure": 4.247648893413288,
+      "strategy_mean_effective_open_exposure": 0.34639712918223414,
+      "strategy_invested_days": 551,
+      "strategy_mean_gross_price_daily_bps": 1.97017621187321,
+      "strategy_mean_fee_daily_bps": 0.498802829420758,
+      "strategy_gross_price_bps_per_unit_exposure": 5.687622806009835,
+      "strategy_fee_bps_per_unit_exposure": 1.439973912596561,
       "strategy_positive_day_share": 0.28958333333333336,
       "strategy_mean_close_exposure": 0.3464151678261229
     }
