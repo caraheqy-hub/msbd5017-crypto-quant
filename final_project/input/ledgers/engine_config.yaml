@@ -1,0 +1,8 @@
+initial_capital: 10000
+broker: binance
+decimal_precision: 2
+market_data_cache_size: 1000
+portfolio_calculation: average_cost
+risk_free_rate: 0
+sharpe_annualization_factor: 365
+next_bar_execution: true

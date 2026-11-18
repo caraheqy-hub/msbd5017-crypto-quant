@@ -1,7 +1,7 @@
 {
   "input": {
     "price_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
-    "audit_package_sha256": "41566451d206ed93ddaad0d376953bcdd84dc08817a3f7d9c179a8ce76e08c3e",
+    "audit_package_sha256": "a6ab543ef77a0ab6066ed76e85e85ab8e95aa9bbd55b1d17bb9e10ddb7fd8fa5",
     "start": "2022-01-01",
     "end": "2026-10-31",
     "total_days": 1765
@@ -10,12 +10,14 @@
     "regime": "BTC收盘价[t-1]/BTC收盘价[t-31]-1；高于10%为上涨，低于-10%为下跌，其余震荡",
     "regime_status": "描述性分析；策略和阈值并非在独立样本外确定",
     "benchmark": "初始资金BTC/ETH各50%，首根日线开盘买入，买入费10bp，此后持有；其敞口接近100%",
-    "strategy": "审计包audit_package.json中的MA60共享账户NAV",
+    "strategy": "Williams %R 14",
     "per_unit_exposure": "策略单位敞口净收益=状态内每日净收益之和/每日开盘成交后有效敞口之和；价格收益与费用由逐笔账本重放并与每日NAV对账。基准资产权重与策略不同，单位敞口比较不是纯信号效应；低敞口状态数值不稳定"
   },
   "whole_period": {
     "strategy_return": 0.5408957559900001,
     "benchmark_return": 0.1449703808427396,
+    "return_difference_percentage_points": 39.59253751472605,
+    "relative_wealth_return": 0.3457952989629698,
     "strategy_mdd": -0.40298813699661384,
     "benchmark_mdd": -0.6886996713789497,
     "strategy_trades": 172

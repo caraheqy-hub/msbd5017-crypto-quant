@@ -1,4 +1,4 @@
-"""将已审计的 MA60 组合与同区间买入持有基准作对照。
+"""将候选策略账户与同区间买入持有基准作对照。
 
 Usage:
     python regime_analysis.py --prices btc_eth_daily.parquet \
@@ -222,7 +222,7 @@ def main() -> None:
             "regime": "BTC收盘价[t-1]/BTC收盘价[t-31]-1；高于10%为上涨，低于-10%为下跌，其余震荡",
             "regime_status": "描述性分析；策略和阈值并非在独立样本外确定",
             "benchmark": "初始资金BTC/ETH各50%，首根日线开盘买入，买入费10bp，此后持有；其敞口接近100%",
-            "strategy": "审计包audit_package.json中的MA60共享账户NAV",
+            "strategy": package["experiment"]["strategy"],
             "per_unit_exposure": (
                 "策略单位敞口净收益=状态内每日净收益之和/每日开盘成交后有效敞口之和；"
                 "价格收益与费用由逐笔账本重放并与每日NAV对账。"
@@ -232,6 +232,10 @@ def main() -> None:
         "whole_period": {
             "strategy_return": float(strategy.iloc[-1] / strategy.iloc[0] - 1),
             "benchmark_return": float(benchmark.iloc[-1] / INITIAL_CASH - 1),
+            "return_difference_percentage_points": float(
+                (strategy.iloc[-1] / INITIAL_CASH - benchmark.iloc[-1] / INITIAL_CASH) * 100
+            ),
+            "relative_wealth_return": float(strategy.iloc[-1] / benchmark.iloc[-1] - 1),
             "strategy_mdd": max_drawdown(strategy),
             "benchmark_mdd": max_drawdown(benchmark),
             "strategy_trades": len(package["trades"]),

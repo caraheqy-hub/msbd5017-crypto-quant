@@ -1,56 +1,44 @@
-"""Combine the three case results into one Markdown + JSON summary."""
+"""从三份分析结果生成中文对照表，数值全部从 JSON 读取。"""
 import json
 from pathlib import Path
 
-BASE = Path(__file__).parent
-CASES = [("ma60", "MA60 简单均线"), ("ema20", "EMA20 指数均线"), ("williams14", "Williams %R 14")]
-
-data = {}
+BASE = Path(__file__).resolve().parent
+CASES = [("ma60", "MA60 简单均线"), ("ema20", "EMA20 指数均线"),
+         ("williams14", "Williams %R 14")]
+data = {name: json.loads((BASE / name / "regime_summary.json").read_text(encoding="utf-8"))
+        for name, _ in CASES}
+benchmark = data["ma60"]["whole_period"]
+lines = ["# 三个候选策略与买入持有基准", "",
+         "这三个账户分别回测，没有合并成一个多策略组合。策略经过历史探索后选定；结果用于描述和比较，不是独立样本外验证。", "",
+         "## 全期表现", "",
+         "基准是初始资金 BTC/ETH 各半、首日开盘扣费买入、之后不调仓的自建组合，不是正式发布的市场指数。", "",
+         "| 策略 | 累计收益 | 最大回撤 | 比基准多赚（百分点） | 相对财富增长 | 成交数 |",
+         "|---|---:|---:|---:|---:|---:|",
+         f"| 买入持有基准 | {benchmark['benchmark_return']*100:+.2f}% | {benchmark['benchmark_mdd']*100:.2f}% | 0.00 | 0.00% | 2 |"]
 for name, label in CASES:
-    data[name] = json.loads((BASE / name / "regime_summary.json").read_text(encoding="utf-8"))
-
-lines = ["# 三个候选策略的同口径比较", ""]
-lines.append("> 描述性结果。策略与阈值不是独立样本外确定的；分状态是条件平均，不是三段区间的累计收益。")
-lines.append("")
-
-lines.append("## 全期")
-lines.append("")
-lines.append("| 策略 | 累计收益 | 最大回撤 | 成交数 |")
-lines.append("|---|---:|---:|---:|")
-for name, label in CASES:
-    wp = data[name]["whole_period"]
-    lines.append(f"| {label} | {wp['strategy_return']*100:+.2f}% | {wp['strategy_mdd']*100:+.2f}% | {wp['strategy_trades']} |")
-
-lines.append("")
-lines.append("## 分市场状态（条件平均日收益，单位 bp）")
-lines.append("")
+    w = data[name]["whole_period"]
+    lines.append(f"| {label} | {w['strategy_return']*100:+.2f}% | {w['strategy_mdd']*100:.2f}% | {w['return_difference_percentage_points']:+.2f} | {w['relative_wealth_return']*100:+.2f}% | {w['strategy_trades']} |")
+lines += ["", "“比基准多赚”是两者累计收益率相减；“相对财富增长”是策略期末财富除以基准期末财富再减一。二者都不是年化收益，也不是扣除市场风险后的 alpha。", "",
+          "## 分市场状态", "",
+          "状态用前一天可知的 BTC 过去 30 天涨跌划分；“下跌”表示近期已经下跌后的交易日，不是完整熊市。状态日可能不连续。1 bp = 0.01%。", ""]
 for regime in ("上涨", "下跌", "震荡"):
-    lines.append(f"### {regime}")
-    lines.append("")
-    lines.append("| 策略 | 天数 | 有仓天数 | 平均开盘敞口 | 净日收益 | 价格/单位敞口 | 费用/单位敞口 |")
-    lines.append("|---|---:|---:|---:|---:|---:|---:|")
+    lines += [f"### {regime}", "",
+              "| 策略 | 天数 | 有仓天数 | 平均开盘敞口 | 平均日净收益 bp | 基准 bp | 平均日超额 bp |",
+              "|---|---:|---:|---:|---:|---:|---:|"]
     for name, label in CASES:
         r = next(x for x in data[name]["regimes"] if x["regime"] == regime)
-        price = "n/a" if r["strategy_gross_price_bps_per_unit_exposure"] is None else f"{r['strategy_gross_price_bps_per_unit_exposure']:+.2f}"
-        fee = "n/a" if r["strategy_fee_bps_per_unit_exposure"] is None else f"{r['strategy_fee_bps_per_unit_exposure']:+.2f}"
-        lines.append(
-            f"| {label} | {r['days']} | {r['strategy_invested_days']} | "
-            f"{r['strategy_mean_effective_open_exposure']*100:.2f}% | "
-            f"{r['strategy_mean_daily_bps']:+.2f} | {price} | {fee} |"
-        )
+        lines.append(f"| {label} | {r['days']} | {r['strategy_invested_days']} | {r['strategy_mean_effective_open_exposure']*100:.2f}% | {r['strategy_mean_daily_bps']:+.2f} | {r['benchmark_mean_daily_bps']:+.2f} | {r['active_mean_daily_bps']:+.2f} |")
+    lines += ["", "| 策略 | 单位敞口价格贡献 bp | 单位敞口费用扣减 bp | 单位敞口净收益 bp |",
+              "|---|---:|---:|---:|"]
+    for name, label in CASES:
+        r = next(x for x in data[name]["regimes"] if x["regime"] == regime)
+        lines.append(f"| {label} | {r['strategy_gross_price_bps_per_unit_exposure']:+.2f} | {-r['strategy_fee_bps_per_unit_exposure']:.2f} | {r['strategy_net_bps_per_unit_exposure']:+.2f} |")
     lines.append("")
-
-lines.append("## 怎么读")
-lines.append("")
-lines.append("- **MA60**：趋势最慢，下跌状态几乎空仓（329 天只 11 天有仓），净亏主要来自费用。")
-lines.append("- **EMA20**：更快，交易 390 笔；下跌状态仍持仓 27 天、敞口 5.43%，价格贡献为负（追涨杀跌的代价）。")
-lines.append("- **Williams14**：区间位置信号，下跌状态反而高仓位（61.26%）且价格贡献为正，更像逢跌买入；代价是回撤最大（−40.30%）。")
-lines.append("- 三者是**候选策略的比较**，不是组合；组合要等各自验证后再谈。")
-lines.append("- 低敞口状态（如下跌 1.52%）的单位敞口值不稳定，只作机制参考。")
-
-markdown = "\n".join(lines) + "\n"
-(BASE / "three_cases.md").write_text(markdown, encoding="utf-8")
-(BASE / "three_cases.json").write_text(
-    json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-)
-print(markdown)
+lines += ["## 怎样理解", "",
+          "MA60 在近期下跌状态大多持有现金；EMA20 在该状态仍有少量持仓，价格变动贡献为负；Williams14 持仓更多，价格贡献为正。这些是账本中的差异，尚不能仅凭此表判断哪个信号有预测能力，或认定损益一定由某种交易行为造成。", "",
+          "费用列是扣减。单位敞口指标把收益或费用之和除以每日开盘有效敞口之和；敞口很小时数值会被放大，卖出后当天无仓位也仍可能有费用。看原始日收益和有仓天数比只看这个比值更稳妥。", "",
+          "目前三组都完成成交账本重放、现金核对、费用与开盘价检查及每日净值损益对账。EMA20 和 Williams14 尚未用独立程序重算指标和下单逻辑；保存成交记录能复算账户，不等于已验证信号生成过程。", "",
+          "每个案例目录的 audit_package.json 保存交易与净值；case_summary.json 保存包哈希和对账误差。新包为 v2，记录了来源账本和配置指纹，哈希与原 MA60 v1 包不同；均尚未取得链上凭据。"]
+(BASE / "three_cases.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+(BASE / "three_cases.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+print("已更新 cases/three_cases.md 和 three_cases.json")

@@ -1,5 +1,7 @@
 # 审计包怎么检查
 
+这里保存最初 MA60 的 v1 包，作为历史核对基准。三个候选策略的新 v2 包位于 `final_project/cases/`，用根目录命令 `python final_project/build_cases.py` 重建。新包补入了指标配置和来源指纹，整包哈希有变化；均尚未上链。
+
 `audit_package.json` 保存这次 MA60 回测的参数、数据和代码指纹、168 笔成交，以及 1765 天账户净值。`audit_manifest.json` 保存该文件的 SHA-256 和两棵 Merkle 树的根哈希。Merkle 树是对多条记录逐层计算指纹的方法，便于检查记录是否一致。
 
 当前包的 SHA-256 是：

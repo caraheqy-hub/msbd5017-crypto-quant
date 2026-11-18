@@ -1,5 +1,4 @@
 {
-  "code_commit": "23f1418",
   "daily_nav": [
     {
       "day": "2022-01-01",
@@ -7067,8 +7066,13 @@
     "sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610"
   },
   "experiment": {
+    "deploy_fraction": 0.45,
     "execution": "signal at bar t close, fill at bar t+1 open",
     "fee_per_side": 0.001,
+    "indicator_config": {
+      "kind": "ema",
+      "period": 20
+    },
     "initial_capital": 10000.0,
     "name": "ema20",
     "period": {
@@ -7076,14 +7080,26 @@
       "start": "2022-01-01"
     },
     "portfolio": "single shared cash account",
-    "strategy": "EMA20 trend",
+    "quantity_decimal_places": 2,
+    "strategy": "EMA20 指数均线",
     "symbols": [
       "BTCUSDT",
       "ETHUSDT"
     ]
   },
   "nav_merkle_root": "b4763552770ca1b7a0ce9a29ecc1f00eea900ad46aeb642455d106545ae4a2e0",
-  "schema": "msbd5017.audit.v1",
+  "provenance": {
+    "builder_sha256": "507ec1cee9e9ec2424586cdc0c6a4095fe58493840bdb756edf845101cc3b45b",
+    "engine_commit_reported": "23f1418",
+    "engine_commit_status": "历史记录所报版本；尚未在本仓库从该提交重跑引擎",
+    "engine_config_sha256": "cc2551ad709794c8dcc3d81deb3d65f160fb938391297f43c7f41540de52f5a4",
+    "indicator_config_sha256": "a98e3e96a0f241fd921b3ac9e30d7b061303f9321fd0b39ae8b895d4a6f6a04e",
+    "ledger_sha256": "8401b143097390435702ac48a1353f4e7ff6d47080c2de0409048632ff7952f0",
+    "source_run": "results_utilfix/20261118_234959/Search",
+    "strategy_source_sha256": "ba074f0bcf27707e409b8d2682abfd4d4a70f2efa66f100ef699230651a9600c",
+    "validation": "账本现金、持仓、费用及开盘价检查；不等于独立重算指标信号"
+  },
+  "schema": "msbd5017.audit.v2",
   "trades": [
     {
       "cash_after": 5838.67283,

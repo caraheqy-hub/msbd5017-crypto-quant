@@ -1,5 +1,4 @@
 {
-  "code_commit": "23f1418",
   "daily_nav": [
     {
       "day": "2022-01-01",
@@ -7067,8 +7066,15 @@
     "sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610"
   },
   "experiment": {
+    "deploy_fraction": 0.45,
     "execution": "signal at bar t close, fill at bar t+1 open",
     "fee_per_side": 0.001,
+    "indicator_config": {
+      "kind": "williams",
+      "overbought": -20,
+      "oversold": -80,
+      "period": 14
+    },
     "initial_capital": 10000.0,
     "name": "williams14",
     "period": {
@@ -7076,6 +7082,7 @@
       "start": "2022-01-01"
     },
     "portfolio": "single shared cash account",
+    "quantity_decimal_places": 2,
     "strategy": "Williams %R 14",
     "symbols": [
       "BTCUSDT",
@@ -7083,7 +7090,18 @@
     ]
   },
   "nav_merkle_root": "5ab0f483d100995ce675748ca7710f7080f756de1efcf545f8ca15dfa44bfe58",
-  "schema": "msbd5017.audit.v1",
+  "provenance": {
+    "builder_sha256": "507ec1cee9e9ec2424586cdc0c6a4095fe58493840bdb756edf845101cc3b45b",
+    "engine_commit_reported": "23f1418",
+    "engine_commit_status": "历史记录所报版本；尚未在本仓库从该提交重跑引擎",
+    "engine_config_sha256": "cc2551ad709794c8dcc3d81deb3d65f160fb938391297f43c7f41540de52f5a4",
+    "indicator_config_sha256": "bd9ddbbaf0bcaecf8d7a5bd06d8ae3cd378ddeb525583168165a25e8b726e391",
+    "ledger_sha256": "974b0b54f31b504b0a5045d1fd732ecfabe3d80ceb60e19cd6c39377398ca906",
+    "source_run": "results_utilfix/20261118_234959/Search",
+    "strategy_source_sha256": "ba074f0bcf27707e409b8d2682abfd4d4a70f2efa66f100ef699230651a9600c",
+    "validation": "账本现金、持仓、费用及开盘价检查；不等于独立重算指标信号"
+  },
+  "schema": "msbd5017.audit.v2",
   "trades": [
     {
       "cash_after": 5523.3225948,

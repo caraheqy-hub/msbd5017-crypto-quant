@@ -1,11 +1,12 @@
 {
   "case": "ema20",
-  "label": "EMA20 trend",
+  "label": "EMA20 指数均线",
   "return": 0.8926838157599999,
   "mdd": -0.2800217337475679,
   "trades": 390,
   "final_nav": 18926.8381576,
-  "package_sha256": "5f68184f843a5d7f10d7863f9181e17ff80bd9c683ce36eeca494eb551e46d35",
+  "package_sha256": "e3512064f0070b73c6d8ca493084cf561e0a3e56c74f3fec002085a3d5a43d2a",
   "trades_merkle_root": "41e010f5ab6adbaf817ac3bbfd85a05e24797e7ddcc362c014b60d0a58b226fe",
-  "nav_merkle_root": "b4763552770ca1b7a0ce9a29ecc1f00eea900ad46aeb642455d106545ae4a2e0"
+  "nav_merkle_root": "b4763552770ca1b7a0ce9a29ecc1f00eea900ad46aeb642455d106545ae4a2e0",
+  "max_cash_error": 1.6370904631912708e-11
 }
