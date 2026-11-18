@@ -1,0 +1,74 @@
+{
+  "input": {
+    "price_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
+    "audit_package_sha256": "5f68184f843a5d7f10d7863f9181e17ff80bd9c683ce36eeca494eb551e46d35",
+    "start": "2022-01-01",
+    "end": "2026-10-31",
+    "total_days": 1765
+  },
+  "method": {
+    "regime": "BTC收盘价[t-1]/BTC收盘价[t-31]-1；高于10%为上涨，低于-10%为下跌，其余震荡",
+    "regime_status": "描述性分析；策略和阈值并非在独立样本外确定",
+    "benchmark": "初始资金BTC/ETH各50%，首根日线开盘买入，买入费10bp，此后持有；其敞口接近100%",
+    "strategy": "审计包audit_package.json中的MA60共享账户NAV",
+    "per_unit_exposure": "策略单位敞口净收益=状态内每日净收益之和/每日开盘成交后有效敞口之和；价格收益与费用由逐笔账本重放并与每日NAV对账。基准资产权重与策略不同，单位敞口比较不是纯信号效应；低敞口状态数值不稳定"
+  },
+  "whole_period": {
+    "strategy_return": 0.8926838157599999,
+    "benchmark_return": 0.1449703808427396,
+    "strategy_mdd": -0.2800217337475679,
+    "benchmark_mdd": -0.6886996713789497,
+    "strategy_trades": 390
+  },
+  "regimes": [
+    {
+      "regime": "上涨",
+      "days": 445,
+      "strategy_mean_daily_bps": 15.65924270783794,
+      "benchmark_mean_daily_bps": 22.984005146626867,
+      "active_mean_daily_bps": -7.324762438788927,
+      "strategy_net_bps_per_unit_exposure": 21.839833050210157,
+      "strategy_mean_effective_open_exposure": 0.7170037734188291,
+      "strategy_invested_days": 429,
+      "strategy_mean_gross_price_daily_bps": 16.17509888254353,
+      "strategy_mean_fee_daily_bps": 0.51585617470556,
+      "strategy_gross_price_bps_per_unit_exposure": 22.559293942648534,
+      "strategy_fee_bps_per_unit_exposure": 0.7194608924383288,
+      "strategy_positive_day_share": 0.4898876404494382,
+      "strategy_mean_close_exposure": 0.7172974322949531
+    },
+    {
+      "regime": "下跌",
+      "days": 329,
+      "strategy_mean_daily_bps": -6.218137497265946,
+      "benchmark_mean_daily_bps": 6.1825064084167956,
+      "active_mean_daily_bps": -12.400643905682742,
+      "strategy_net_bps_per_unit_exposure": -114.54635675138324,
+      "strategy_mean_effective_open_exposure": 0.0542848997874466,
+      "strategy_invested_days": 27,
+      "strategy_mean_gross_price_daily_bps": -5.626579638057088,
+      "strategy_mean_fee_daily_bps": 0.5915578592088533,
+      "strategy_gross_price_bps_per_unit_exposure": -103.64907479037542,
+      "strategy_fee_bps_per_unit_exposure": 10.897281961007714,
+      "strategy_positive_day_share": 0.03343465045592705,
+      "strategy_mean_close_exposure": 0.054249968485176416
+    },
+    {
+      "regime": "震荡",
+      "days": 960,
+      "strategy_mean_daily_bps": 3.4801874360191865,
+      "benchmark_mean_daily_bps": -1.521555293073017,
+      "active_mean_daily_bps": 5.001742729092204,
+      "strategy_net_bps_per_unit_exposure": 9.933650861134343,
+      "strategy_mean_effective_open_exposure": 0.35034324083560325,
+      "strategy_invested_days": 516,
+      "strategy_mean_gross_price_daily_bps": 4.572374190612451,
+      "strategy_mean_fee_daily_bps": 1.0921867545932695,
+      "strategy_gross_price_bps_per_unit_exposure": 13.051127173759332,
+      "strategy_fee_bps_per_unit_exposure": 3.1174763126250022,
+      "strategy_positive_day_share": 0.2604166666666667,
+      "strategy_mean_close_exposure": 0.35037639805282617
+    }
+  ],
+  "unclassified_days": 31
+}

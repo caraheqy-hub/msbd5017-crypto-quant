@@ -1,0 +1,11 @@
+{
+  "case": "williams14",
+  "label": "Williams %R 14",
+  "return": 0.5408957559900001,
+  "mdd": -0.40298813699661384,
+  "trades": 172,
+  "final_nav": 15408.9575599,
+  "package_sha256": "41566451d206ed93ddaad0d376953bcdd84dc08817a3f7d9c179a8ce76e08c3e",
+  "trades_merkle_root": "088484b2be9cd618c144d4012d226309a1ef6960d5be69b093c95845d7501bd8",
+  "nav_merkle_root": "5ab0f483d100995ce675748ca7710f7080f756de1efcf545f8ca15dfa44bfe58"
+}

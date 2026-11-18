@@ -1,0 +1,11 @@
+{
+  "case": "ma60",
+  "label": "MA60 trend",
+  "return": 1.1428068688200002,
+  "mdd": -0.3147815519593289,
+  "trades": 168,
+  "final_nav": 21428.0686882,
+  "package_sha256": "254b65e0d7f054d8ba0e040b8074571e663a9e3d006fa1aa8250ad8e9bf87124",
+  "trades_merkle_root": "4ba9da5e906820fef0b8fd30832a96f3ab2fbe31733ba9c25fc66dd3a14fcda9",
+  "nav_merkle_root": "af3489e83f9f80f6af74019b5cc0e681eac64d2363a548206531212797347b59"
+}
