@@ -1,42 +1,43 @@
-# MSBD 5017: auditable crypto portfolio backtest
+# BTC/ETH 策略回测与链上存证
 
-Group: HE Qiyuan, ZHANG Xinyue. Interim report: 21 November 2026.
+MSBD5017 · Group 27 · HE Qiyuan、ZHANG Xinyue
 
-This is a research prototype. Its core question is whether a reader can reproduce a multi-strategy crypto backtest and detect later changes to its input, parameters or trades. Hashing alone provides local integrity; the Solidity contract can publish the final digest on a chain, but has **not** been deployed.
+我们研究一个简单的问题：用均线决定何时持有比特币和以太坊，比一直持有表现如何？然后把数据版本、交易记录和每日账户净值整理成一份文件，供别人重算，并准备将文件指纹写到区块链上，方便核查它后来有没有被改过。
 
-## Run
+## 从哪里开始看
 
-Python 3.10+ with the standard library is sufficient.
+| 你想了解什么 | 看这里 |
+|---|---|
+| 项目为什么做、目前做到了哪里 | [项目说明](项目说明.md) |
+| 两个人各做什么、下一步怎么提 PR | [分工与验收](docs/分工与验收.md) |
+| 当前回测的规则和结果怎么理解 | [实验方法与结果](final_project/README.md) |
+| 审计包是什么、怎样检查 | [审计包说明](audit/README.md) |
+| 以前讨论过什么、数字为什么变过 | [历史材料](archive/README.md)；这些不是当前结论 |
+
+## 先运行已有的分析
+
+在仓库根目录执行，需要 Python 3.10 或以上：
 
 ```powershell
-python .\crypto_project\backtest.py demo --out .\crypto_project\outputs\demo
-python .\crypto_project\backtest.py verify --out .\crypto_project\outputs\demo
+python -m pip install -r requirements.txt
+python final_project/regime_analysis.py --prices final_project/input/btc_eth_daily.parquet --audit-package audit/audit_package.json --output-dir final_project/output
+python audit/verify_local.py
 ```
 
-`data/binance_spot_daily.csv` is the frozen real Binance BTC/ETH spot dataset (2022-01-01 through 2026-10-31). `outputs/real` contains its verified results. `demo` remains a deterministic **synthetic** engineering check. To refresh real data on a machine with Binance access, run:
+第一条分析命令读取已保存的 MA60 回测账户净值，重新计算基准、市场状态和收益拆分；它不会重新运行 Argo 引擎。输出在 `final_project/output/`。第二条命令检查本地审计包的哈希，并在内存中修改一笔交易，演示如何发现变化。
 
-```powershell
-python .\crypto_project\backtest.py fetch --start 2022-01-01 --end 2026-11-01 --out .\crypto_project\data\binance_spot_daily.csv
-python .\crypto_project\backtest.py run --csv .\crypto_project\data\binance_spot_daily.csv --out .\crypto_project\outputs\real
-python .\crypto_project\backtest.py verify --out .\crypto_project\outputs\real
+## 仓库结构
+
+```text
+README.md               阅读入口和运行命令
+项目说明.md              项目目标、现状和交付内容
+docs/                   分工、PR 和验收要求
+final_project/          当前实验的数据、分析脚本和结果
+audit/                  当前审计包及检查脚本
+scripts/                待接入 Hardhat 的上链、读链脚本
+archive/                早期实验、旧 PPT、旧报告和讨论记录
 ```
 
-The public endpoint needs no key. Keep raw CSV and `audit.json` together. The fetch command records UTC daily close prices and excludes incomplete candles. `run` accepts a CSV with `date,symbol,close` columns, one close per asset/day; it requires aligned BTCUSDT and ETHUSDT dates, strictly positive prices and at least 120 observations.
+当前已完成历史回测结果对账、市场状态分析和本地哈希检查。Argo 引擎改动还需要同学复核；包的生成脚本仍有本机路径；本仓库还未整合 Hardhat 工程，也没有当前审计包的链上交易凭据。这些是下一步共同完成的内容。
 
-## Design and limits
-
-- Universe: BTCUSDT and ETHUSDT spot, with USDT cash. No leverage, shorts, funding or gas. The DEX comparison is future work, not a proxy using OKX centralized SWAP candles.
-- Strategies: BTC buy-and-hold, equal-weight BTC/ETH, dual moving-average trend (20/60 days), five-day mean reversion, and a 50/50 blend of the latter two. Each uses the same dates and fee model.
-- Timing: the signal is calculated from data available through yesterday's close. It trades at today's close, paying 10 basis points on absolute weight turnover, and earns tomorrow's close-to-close return. This timing is conservative but today's close fill is an idealization; spread, market impact, and latency are not modeled.
-- Splits: first 70% of comparable daily observations are development, final 30% are held out. Parameters are fixed in code before inspection of the holdout. Regimes use the *past* 30-day BTC return: bull above +10%, bear below -10%, otherwise sideways. This causal label is descriptive, not an ex-post classification of future market conditions.
-- Metrics: total return, annualized volatility, Sharpe (zero risk-free rate), maximum drawdown, and observation count. Regime comparison uses mean daily net returns and days. There is no claim of statistical significance or optimality.
-- Audit: `audit.json` includes SHA-256 digests of the exact input CSV bytes, code bytes and canonical `trades.json` bytes, plus config, metrics and a final root hash. `verify` recomputes every digest and the root. The root can be passed to `BacktestAnchor.sol`; an emitted event then attests to the earlier root, while raw files must be preserved off-chain for independent replay. The contract cannot prove data quality or strategy profitability.
-
-## Next steps for final project
-
-1. Review and extend the frozen Binance spot study. The current real-data holdout has 512 comparable days: trend +25.3%, blend +0.6%, BTC hold -25.6%, equal weight -16.2%, reversal -23.6%. The trend rule has positive mean daily net returns in each of the three causal market regimes; this single historical window does not establish significance or future profitability.
-2. Add a paper-order adapter only after the historical run passes. Record order, fill, timestamp, fees and slippage separately.
-3. Decide whether the comparison needs OKX *DEX aggregator* on-chain token data or OKX centralized perpetual SWAP data. They have different execution, funding, gas and liquidity assumptions, so do not mix them in the same backtest without an explicit model.
-4. Deploy the anchor contract to a testnet, submit the root, save chain ID, address and transaction hash, then demonstrate a modified trade failing verification.
-
-Sources: [Binance public market-data API](https://developers.binance.com/en/docs/products/spot/rest-api), [Argo Trading framework](https://github.com/rxtech-lab/argo-trading), [OKX DEX Swap API](https://web3.okx.com/ko/onchainos/dev-docs/trade/dex-swap).
+这个仓库是最终协作入口。同学原仓库中的合约和 Hardhat 工程通过 PR 接入这里。旧 PPT 位于历史目录，更新前请勿直接用于展示。

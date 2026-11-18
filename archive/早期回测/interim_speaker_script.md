@@ -1,3 +1,5 @@
+> 历史记录：本文保留当时的判断和数字，部分结论后来已修正。当前项目请从仓库根目录 README.md 阅读。
+
 # Three-minute interim report script (English) — real Binance data
 
 **Slide 1, about 30 seconds**

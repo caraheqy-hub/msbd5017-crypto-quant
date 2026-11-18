@@ -3,8 +3,9 @@ import hashlib
 import json
 from pathlib import Path
 
-PKG = Path(r"D:\argo_work\group27_trade\audit\audit_package.json")
-MAN = Path(r"D:\argo_work\group27_trade\audit\audit_manifest.json")
+HERE = Path(__file__).resolve().parent
+PKG = HERE / "audit_package.json"
+MAN = HERE / "audit_manifest.json"
 
 
 def sha256_hex(data: bytes) -> str:
@@ -19,6 +20,8 @@ def main() -> None:
     print("package sha256 :", local)
     print("manifest sha256:", manifest["package_sha256"])
     print("match          :", local == manifest["package_sha256"])
+    if local != manifest["package_sha256"]:
+        raise SystemExit("审计包与本地清单不匹配")
 
     # Tamper with one trade and show the hash changes, so verification fails.
     obj = json.loads(raw)
