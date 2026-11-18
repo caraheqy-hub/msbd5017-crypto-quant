@@ -1,0 +1,59 @@
+{
+  "input": {
+    "price_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
+    "audit_package_sha256": "4c676f12fa0afe37342c7dd7d67d8b9724f8042b52db79b8e0a1c4756e07ea19",
+    "start": "2022-01-01",
+    "end": "2026-10-31",
+    "total_days": 1765
+  },
+  "method": {
+    "regime": "BTC收盘价[t-1]/BTC收盘价[t-31]-1；高于10%为上涨，低于-10%为下跌，其余震荡",
+    "regime_status": "描述性分析；策略和阈值并非在独立样本外确定",
+    "benchmark": "初始资金BTC/ETH各50%，首根日线开盘买入，买入费10bp，此后持有；其敞口恒为100%",
+    "strategy": "审计包audit_package.json中的MA60共享账户NAV",
+    "per_unit_exposure": "策略单位敞口日收益 = 策略平均日收益 / 平均收盘仓位；基准敞口100%，故其单位敞口日收益即基准平均日收益。该列用于区分「信号弱」与「仓位低」，仓位接近0时数值不稳定，仅作机制参考"
+  },
+  "whole_period": {
+    "strategy_return": 1.1428068688200002,
+    "benchmark_return": 0.1449703808427396,
+    "strategy_mdd": -0.3147815519593289,
+    "benchmark_mdd": -0.6886996713789497,
+    "strategy_trades": 168
+  },
+  "regimes": [
+    {
+      "regime": "上涨",
+      "days": 445,
+      "strategy_mean_daily_bps": 17.915505461297318,
+      "benchmark_mean_daily_bps": 22.984005146626867,
+      "active_mean_daily_bps": -5.068499685329549,
+      "strategy_mean_daily_bps_per_unit_exposure": 24.12508405992647,
+      "active_mean_daily_bps_per_unit_exposure": 1.1410789132996015,
+      "strategy_positive_day_share": 0.5123595505617977,
+      "strategy_mean_close_exposure": 0.74260903782948
+    },
+    {
+      "regime": "下跌",
+      "days": 329,
+      "strategy_mean_daily_bps": -0.0996474664656804,
+      "benchmark_mean_daily_bps": 6.1825064084167956,
+      "active_mean_daily_bps": -6.282153874882476,
+      "strategy_mean_daily_bps_per_unit_exposure": -6.54082516257365,
+      "active_mean_daily_bps_per_unit_exposure": -12.723331570990446,
+      "strategy_positive_day_share": 0.015197568389057751,
+      "strategy_mean_close_exposure": 0.015234693481161882
+    },
+    {
+      "regime": "震荡",
+      "days": 960,
+      "strategy_mean_daily_bps": 1.4713733824524566,
+      "benchmark_mean_daily_bps": -1.521555293073017,
+      "active_mean_daily_bps": 2.992928675525474,
+      "strategy_mean_daily_bps_per_unit_exposure": 4.2474277084512275,
+      "active_mean_daily_bps_per_unit_exposure": 5.768983001524244,
+      "strategy_positive_day_share": 0.28958333333333336,
+      "strategy_mean_close_exposure": 0.3464151678261229
+    }
+  ],
+  "unclassified_days": 31
+}
