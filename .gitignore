@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Generated artifacts
+build/
+slides_preview/
+
+# Local synthetic backup (keep the real deliverables only)
+_backup_synthetic_20261117/
