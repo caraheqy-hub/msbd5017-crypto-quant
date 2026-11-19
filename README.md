@@ -14,6 +14,7 @@ MSBD5017 · Group 27 · HE Qiyuan、ZHANG Xinyue
 | 我们对 Argo 改了什么、还建议改什么 | [平台改进说明](docs/平台改进说明.md) |
 | 当前回测的规则和结果怎么理解 | [实验方法与结果](final_project/README.md) |
 | 三个策略比基准多赚多少 | [三案例结果表](final_project/cases/three_cases.md) |
+| Qiyuan 两分钟中期汇报与讲稿 | [汇报材料](presentations/interim/README.md) |
 | 审计包是什么、怎样检查 | [审计包说明](audit/README.md) |
 | 以前讨论过什么、数字为什么变过 | [历史材料](archive/README.md)；这些不是当前结论 |
 
