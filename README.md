@@ -30,11 +30,13 @@ python -m pip install -r requirements.txt
 python final_project/build_cases.py
 python final_project/independent_replay.py
 python audit/verify_local.py
+python final_project/inspect_case.py --case ma60 --day 2022-03-02
+python final_project/run_record.py record
 ```
 
-`build_cases.py` 从三份保存的成交账本重建净值，检查账户计算，生成基准、市场状态、仓位和成本分析及 v2 审计包。`independent_replay.py` 从行情与配置独立重算三案例信号和成交，再与原账本对照。`verify_local.py` 针对原 MA60 v1 包演示本地哈希检查和篡改检测。
+`build_cases.py` 从三份保存的成交账本重建净值，检查账户计算，生成基准、市场状态、仓位和成本分析及 v2 审计包。`independent_replay.py` 从行情与配置独立重算三案例信号和成交，再与原账本对照。`verify_local.py` 针对原 MA60 v1 包演示本地哈希检查和篡改检测。`inspect_case.py` 按日期查看指标、信号、次日成交与账户变化；`run_record.py` 为每次实验生成带 `run_id` 的记录，并支持两次实验比较。
 
-输出在 `final_project/cases/`。这套 Python 程序不是通用 Python 策略接入接口，也没有重新编译运行 Argo。当前仓库以脚本和文件为主，交互式信号查看与实验管理页面尚未开发。
+输出在 `final_project/cases/` 和 `final_project/runs/`。这套 Python 程序不是通用 Python 策略接入接口，也没有重新编译运行 Argo。当前已有命令行原型，交互式信号查看与实验管理页面尚未开发。
 
 ## 同学从这里开始
 

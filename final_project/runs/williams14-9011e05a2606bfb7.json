@@ -1,0 +1,18 @@
+{
+  "run_id": "9011e05a2606bfb7",
+  "created_at": "2026-11-19T09:15:35.955060+00:00",
+  "case": "williams14",
+  "config": {
+    "kind": "williams",
+    "period": 14,
+    "overbought": -20,
+    "oversold": -80
+  },
+  "data_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
+  "code_commit": "23f1418",
+  "results": {
+    "return": 0.5408957559900001,
+    "mdd": -0.40298813699661384,
+    "trades": 172
+  }
+}
