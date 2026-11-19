@@ -1,0 +1,186 @@
+{
+  "packages": [
+    {
+      "case": "ma60",
+      "sha256": "f77738d1a27e5e3b08688d8cb525a9ea4c74fa46b069cedf0797c394ab8cddec",
+      "checks": {
+        "utf8_lf_without_bom": true,
+        "summary_hash_matches": true,
+        "local_proof_hash_matches": true,
+        "expected_trade_count": true,
+        "daily_nav_points": true,
+        "data_hash_matches": true,
+        "trades_merkle_matches": true,
+        "nav_merkle_matches": true,
+        "ledger_sha256": true,
+        "indicator_config_sha256": true,
+        "strategy_source_sha256": true,
+        "engine_config_sha256": true,
+        "builder_sha256": true
+      },
+      "all_passed": true
+    },
+    {
+      "case": "ema20",
+      "sha256": "4f733e866989353c63674aa64071277411c6ac9451c0af1e997a7573790ae920",
+      "checks": {
+        "utf8_lf_without_bom": true,
+        "summary_hash_matches": true,
+        "local_proof_hash_matches": true,
+        "expected_trade_count": true,
+        "daily_nav_points": true,
+        "data_hash_matches": true,
+        "trades_merkle_matches": true,
+        "nav_merkle_matches": true,
+        "ledger_sha256": true,
+        "indicator_config_sha256": true,
+        "strategy_source_sha256": true,
+        "engine_config_sha256": true,
+        "builder_sha256": true
+      },
+      "all_passed": true
+    },
+    {
+      "case": "williams14",
+      "sha256": "8e29d79d04e4c1cf21ec5ee8d18a3f223f1e96fc777eb7b7c9ae2b82451871a9",
+      "checks": {
+        "utf8_lf_without_bom": true,
+        "summary_hash_matches": true,
+        "local_proof_hash_matches": true,
+        "expected_trade_count": true,
+        "daily_nav_points": true,
+        "data_hash_matches": true,
+        "trades_merkle_matches": true,
+        "nav_merkle_matches": true,
+        "ledger_sha256": true,
+        "indicator_config_sha256": true,
+        "strategy_source_sha256": true,
+        "engine_config_sha256": true,
+        "builder_sha256": true
+      },
+      "all_passed": true
+    }
+  ],
+  "network": {
+    "checked_at_utc": "2026-11-19T20:55:57.645Z",
+    "rpc_url": "https://testnet.chainlab.fun",
+    "account_source": "public sender in existing Counter deployment journal; current keystore not unlocked or verified",
+    "account": "0x715790f90491a4f8b843c52ac182e1d6bea43a88",
+    "rpc_methods_allowed": [
+      "eth_chainId",
+      "eth_getBlockByNumber",
+      "eth_getBalance",
+      "eth_getCode",
+      "eth_getTransactionReceipt",
+      "eth_call",
+      "eth_estimateGas",
+      "eth_gasPrice",
+      "eth_maxPriorityFeePerGas",
+      "eth_blockNumber"
+    ],
+    "network": {
+      "chain_id": "31337",
+      "genesis_hash": "0x02f0e710b8cd892a4c07c37a9692f3fe855d4fd6e23163f3ab6e40aa3895df24",
+      "latest_block": 20,
+      "latest_timestamp": 1795115389,
+      "old_proof_genesis_matches": true
+    },
+    "account_balance": {
+      "wei": "998113380382474488",
+      "native_units_18_decimals": "0.998113380382474488"
+    },
+    "counter_code_present": true,
+    "old_registry": {
+      "address": "0x35887245652F53eA72c8D6a9FD595c9bE78Cb284",
+      "code_present": true,
+      "executable_bytecode_matches_local": false,
+      "record_count": "9",
+      "historical_proof_hash_matches": true,
+      "historical_record_submitter": "0x715790F90491A4F8b843C52AC182E1D6bEa43a88",
+      "historical_receipt_confirmed": true
+    },
+    "simulations": [
+      {
+        "case": "ma60",
+        "simulation_passed": true,
+        "predicted_record_id": "9",
+        "estimated_gas": "95770"
+      },
+      {
+        "case": "ema20",
+        "simulation_passed": true,
+        "predicted_record_id": "9",
+        "estimated_gas": "95770"
+      },
+      {
+        "case": "williams14",
+        "simulation_passed": true,
+        "predicted_record_id": "9",
+        "estimated_gas": "95770"
+      }
+    ],
+    "existing_new_package_records": [
+      {
+        "case": "ma60",
+        "record_ids": []
+      },
+      {
+        "case": "ema20",
+        "record_ids": []
+      },
+      {
+        "case": "williams14",
+        "record_ids": []
+      }
+    ],
+    "fee_estimate": {
+      "max_fee_per_gas_wei": "1160835722",
+      "three_submissions_estimated_wei": "333519711287820",
+      "three_submissions_native_units": "0.00033351971128782",
+      "balance_covers_estimate": true,
+      "note": "Estimate only; gas and network fees may change before actual transactions"
+    },
+    "no_private_key_loaded": true,
+    "no_transaction_signed_or_sent": true
+  },
+  "deployed_source": [
+    {
+      "build_info": "solc-0_8_34-cd936fd3301816957b15453f59933679a4c5b30c.json",
+      "source_matches_current": true,
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      }
+    }
+  ],
+  "production_bytecode_comparison": {
+    "build_profile": "production",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "exact_bytecode_match": false,
+    "executable_bytecode_match": true,
+    "onchain_bytes": 668,
+    "compiled_bytes": 668
+  },
+  "conclusion": {
+    "packages_consistent": true,
+    "chainlab_rpc_available": true,
+    "historical_chain_identity_matches": true,
+    "old_registry_compatible_and_reusable": true,
+    "public_account_balance_covers_current_estimate": true,
+    "current_keystore_identity_verified": false,
+    "audit_scripts_still_local_only": true,
+    "transactions_sent": 0,
+    "commits_created": 0,
+    "pushes_performed": 0
+  },
+  "notes": [
+    "Default-profile bytecode differs because old deployment used optimizer enabled with 200 runs. Production executable bytecode matches; metadata differs.",
+    "All three independent simulations predicted record 9 because eth_call does not persist changes. Actual future record IDs must be read from transaction events.",
+    "Fee estimates are a snapshot, not a guaranteed final cost.",
+    "Public account derived from Counter deployment journal. No private key was loaded or keystore unlocked.",
+    "Argo historical source/build validation remains separate work; file consistency is not proof of strategy effectiveness."
+  ]
+}

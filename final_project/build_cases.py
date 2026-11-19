@@ -77,7 +77,7 @@ def build(name, label):
     package = {
         "schema": "msbd5017.audit.v2",
         "experiment": dict(name=name, strategy=label,
-                           indicator_config=json.loads(config.read_text()),
+                           indicator_config=json.loads(config.read_text(encoding="utf-8")),
                            period=dict(start=nav[0]["day"], end=nav[-1]["day"]),
                            symbols=list(positions), initial_capital=10000.0,
                            deploy_fraction=.45, quantity_decimal_places=2, fee_per_side=.001,
@@ -100,14 +100,14 @@ def build(name, label):
     out = OUT / name
     out.mkdir(parents=True, exist_ok=True)
     pkg = out / "audit_package.json"
-    pkg.write_text(json.dumps(package, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    pkg.write_text(json.dumps(package, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     values = np.array([x["nav"] for x in nav])
     summary = dict(case=name, label=label, **{"return": values[-1] / 10000 - 1},
                    mdd=float(min(values / np.maximum.accumulate(values) - 1)),
                    trades=len(entries), final_nav=float(values[-1]),
                    package_sha256=sha(pkg), trades_merkle_root=merkle(entries),
                    nav_merkle_root=merkle(nav), max_cash_error=max_cash_error)
-    (out / "case_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (out / "case_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"{name}: {len(entries)} 笔；逐笔现金最大差 {max_cash_error:.3g}", flush=True)
     return pkg, out
 

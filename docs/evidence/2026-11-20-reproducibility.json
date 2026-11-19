@@ -1,0 +1,44 @@
+{
+  "baseline_commit": "1686b539d79df8f0042acab5c701718076a6a6e9",
+  "platform": "Windows / Python 3.11.5",
+  "repeated_runs_identical": true,
+  "output_files_compared": 15,
+  "cross_platform_execution": "Linux/macOS not executed",
+  "cases": {
+    "ma60": {
+      "trades": 168,
+      "daily_nav_points": 1765,
+      "trades_and_nav_equal_to_baseline": true,
+      "changed_provenance_fields": [
+        "builder_sha256",
+        "indicator_config_sha256"
+      ],
+      "old_package_sha256_git_blob": "8953904ac5fc60c69942e569ea4c147ba1b5eb9852ff84f23fde6a0f966fe89c",
+      "new_package_sha256": "f77738d1a27e5e3b08688d8cb525a9ea4c74fa46b069cedf0797c394ab8cddec"
+    },
+    "ema20": {
+      "trades": 390,
+      "daily_nav_points": 1765,
+      "trades_and_nav_equal_to_baseline": true,
+      "changed_provenance_fields": [
+        "builder_sha256",
+        "indicator_config_sha256"
+      ],
+      "old_package_sha256_git_blob": "134b063b0204635463eea2cf740953cacb7bc5c4734e2d3836d6ac1d3c54416b",
+      "new_package_sha256": "4f733e866989353c63674aa64071277411c6ac9451c0af1e997a7573790ae920"
+    },
+    "williams14": {
+      "trades": 172,
+      "daily_nav_points": 1765,
+      "trades_and_nav_equal_to_baseline": true,
+      "changed_provenance_fields": [
+        "builder_sha256",
+        "indicator_config_sha256"
+      ],
+      "old_package_sha256_git_blob": "a96c58d9838b5be98daf157bce6dac429371fa8eb25bcc969e85876530356b2e",
+      "new_package_sha256": "8e29d79d04e4c1cf21ec5ee8d18a3f223f1e96fc777eb7b7c9ae2b82451871a9"
+    }
+  },
+  "git_filters_preserve_current_bytes": true,
+  "historical_v1_sha256": "4c676f12fa0afe37342c7dd7d67d8b9724f8042b52db79b8e0a1c4756e07ea19"
+}

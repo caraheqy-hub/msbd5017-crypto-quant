@@ -1,0 +1,18 @@
+# Current pipeline: identical checkout bytes on Windows, macOS and Linux.
+/final_project/** text=auto eol=lf
+/scripts/** text=auto eol=lf
+/docs/** text=auto eol=lf
+/README.md text eol=lf
+/audit/** text=auto eol=lf
+# Historical v1 manifest hashes the CRLF representation. Keep that convention.
+/audit/audit_package.json text eol=crlf
+*.parquet binary
+
+/contracts/** text=auto eol=lf
+/test/** text=auto eol=lf
+/ignition/modules/** text=auto eol=lf
+/hardhat.config.ts text eol=lf
+/package.json text eol=lf
+/bun.lock text eol=lf
+/tsconfig.json text eol=lf
+/.gitignore text eol=lf

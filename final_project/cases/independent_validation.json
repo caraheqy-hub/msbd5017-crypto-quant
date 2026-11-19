@@ -1,7 +1,7 @@
 {
   "method": "从行情与配置独立计算信号及成交；模拟完成后才读取原账本比较",
   "limitation": "复现现有引擎规则，非独立样本外或策略有效性验证；不等同完整Go测试",
-  "reference_sha256": "a998e7fa4928cbdcb3324048ed2c2e1dbf5ae892265a4d3b0d71abd79f3f3802",
+  "reference_sha256": "ab6ca0c324c2abb59645944dc741dec91771a1e2d2e9445becb70aa81ec541c3",
   "price_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
   "cases": [
     {

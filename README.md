@@ -4,7 +4,7 @@ MSBD5017 · Group 27 · HE Qiyuan、ZHANG Xinyue
 
 我们基于 Argo 做一个策略研究工具原型。研究者不仅要得到收益曲线，还要检查信号为何产生、交易如何执行、不同实验为什么有差异，并保存能交给别人核查的记录。
 
-**回测记录上链与链上核验是平台的正式功能之一，由 ZHANG Xinyue 主导。** 研究者生成审计包后，可提交包哈希，保存链上凭据，并让审核者读链比对文件；当前已有包和脚本，工程集成与实际链上验证仍待完成。
+**回测记录上链与链上核验是平台的正式功能之一，由 ZHANG Xinyue 主导。** 研究者生成审计包后，可提交包哈希，保存链上凭据，并让审核者读链比对文件；当前已有包和脚本，本地 Hardhat 工程与模拟链验证已完成；三案例测试网存证及核验已完成。
 
 MA60、EMA20、Williams14 是三个演示案例，用来检验同一研究流程能否支持不同规则。历史收益是案例输出，项目的目标是完善研究流程，并非推荐收益最高的策略。
 
@@ -53,4 +53,38 @@ presentations/interim/  当前两分钟汇报及讲稿
 archive/                早期实验与讨论，不代表当前结论
 ```
 
-已完成：三案例计算对照、账户检查、结果比较及审计包。待完成：研究功能界面与接口、Argo 构建版本复核、Hardhat 集成和实际链上凭据。详细状态以功能范围文档为准。这个仓库是最终协作入口，旧 PPT 已归档。
+已完成：三案例计算对照、账户检查、结果比较及审计包。待完成：研究功能界面与接口、Argo 构建版本复核、测试网存证及实际链上凭据。详细状态以功能范围文档为准。这个仓库是最终协作入口，旧 PPT 已归档。
+
+## File format and reproducibility
+
+Run `python scripts/check-reproducibility.py` to rebuild and compare two full runs.
+See [format rules and version notes](docs/reproducibility.md) for the historical v1 exception and new v2 fingerprints.
+
+## Local contract integration
+
+The registry, parameterized audit tools and local tests are integrated.
+Run `bun run build`, `bun run typecheck`, `bun run test`, then `bun run demo:local`.
+The three-case demo uses an ephemeral local simulated chain; these are not testnet proofs.
+See [local chain guide and source attribution](docs/chain-integration.md) and
+[executed check results](docs/evidence/2026-11-20-chain-integration.json).
+
+## Chainlab commands
+
+See [step-by-step testnet commands](docs/chainlab-commands.md). Start with
+`bun run chainlab:check` (read-only). Only `chainlab:anchor` sends a transaction.
+Current package hashes and the existing registry are pinned in scripts/chainlab-manifest.json.
+
+## Verified chainlab results
+
+All three current audit packages have confirmed chainlab proofs. Original files
+pass, modified copies fail, and originals pass again (9 independent CLI checks).
+See [records, transactions and proof files](docs/chainlab-results.md).
+
+## Demo and teammate handoff
+
+See [beginner demonstration and handoff instructions](docs/演示与交接说明.md)
+for read-only verification of all three cases, reproducible tampered copies,
+contribution details and remaining work.
+
+See [file-by-file changes and provenance](docs/文件改动清单.md) for the
+imported contract, new code, teammate-code edits, generated results and format-only changes.

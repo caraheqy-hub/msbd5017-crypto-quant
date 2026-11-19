@@ -8,3 +8,14 @@ slides_preview/
 
 # Local synthetic backup (keep the real deliverables only)
 _backup_synthetic_20261117/
+
+# Hardhat dependencies, generated output and local secrets
+node_modules/
+artifacts/
+cache/
+types/
+dist/
+coverage/
+ignition/deployments/
+.env
+.env.*

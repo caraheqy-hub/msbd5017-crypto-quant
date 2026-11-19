@@ -244,9 +244,9 @@ def main() -> None:
         "unclassified_days": int((table.regime == "未分类").sum()),
     }
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    table.to_csv(args.output_dir / "regime_daily.csv", float_format="%.10f")
+    table.to_csv(args.output_dir / "regime_daily.csv", float_format="%.10f", lineterminator="\n")
     (args.output_dir / "regime_summary.json").write_text(
-        json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n"
     )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 

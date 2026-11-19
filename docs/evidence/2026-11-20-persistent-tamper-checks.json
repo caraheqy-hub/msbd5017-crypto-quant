@@ -1,0 +1,37 @@
+{
+  "date_local": "2026-11-20",
+  "network": "localhost",
+  "rpc_url": "http://127.0.0.1:8545",
+  "latest_block": 4,
+  "results": [
+    {
+      "case": "ema20",
+      "original_file": "final_project/cases/ema20/audit_package.json",
+      "copy_file": "build/proofs/ema20.persistent-20261120.tampered.json",
+      "record_id": "1",
+      "quantity_before": 0.1,
+      "quantity_after": 0.11,
+      "original_before_exit_code": 0,
+      "tampered_exit_code": 1,
+      "original_after_exit_code": 0,
+      "original_sha256": "0x4f733e866989353c63674aa64071277411c6ac9451c0af1e997a7573790ae920",
+      "tampered_sha256": "0xe0037eda479d6c23d55a13a18496978b0c596097f7fe13011e56d8eb6d30b96a",
+      "original_unchanged": true
+    },
+    {
+      "case": "williams14",
+      "original_file": "final_project/cases/williams14/audit_package.json",
+      "copy_file": "build/proofs/williams14.persistent-20261120.tampered.json",
+      "record_id": "2",
+      "quantity_before": 1.49,
+      "quantity_after": 1.5,
+      "original_before_exit_code": 0,
+      "tampered_exit_code": 1,
+      "original_after_exit_code": 0,
+      "original_sha256": "0x8e29d79d04e4c1cf21ec5ee8d18a3f223f1e96fc777eb7b7c9ae2b82451871a9",
+      "tampered_sha256": "0x9ab46f393e3134aaf3d1aa467f1b6b2252e77200aa0bc46d4614a3ced777ca4b",
+      "original_unchanged": true
+    }
+  ],
+  "scope": "Read-only local chain verification; no transactions, commits or pushes performed."
+}
