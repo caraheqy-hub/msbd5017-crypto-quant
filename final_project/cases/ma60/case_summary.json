@@ -5,7 +5,7 @@
   "mdd": -0.3147815519593289,
   "trades": 168,
   "final_nav": 21428.0686882,
-  "package_sha256": "21b7bcacac1a86622fd4e3867afec13f2346d13bef6aa34aba02d2201dddfcc5",
+  "package_sha256": "f77738d1a27e5e3b08688d8cb525a9ea4c74fa46b069cedf0797c394ab8cddec",
   "trades_merkle_root": "4ba9da5e906820fef0b8fd30832a96f3ab2fbe31733ba9c25fc66dd3a14fcda9",
   "nav_merkle_root": "af3489e83f9f80f6af74019b5cc0e681eac64d2363a548206531212797347b59",
   "max_cash_error": 1.4551915228366852e-11

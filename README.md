@@ -4,7 +4,7 @@ MSBD5017 · Group 27 · HE Qiyuan、ZHANG Xinyue
 
 我们基于 Argo 做一个策略研究工具原型。研究者不仅要得到收益曲线，还要检查信号为何产生、交易如何执行、不同实验为什么有差异，并保存能交给别人核查的记录。
 
-**回测记录上链与链上核验是我们项目的功能之一，由 ZHANG Xinyue 主导。** 当前已有审计包与脚本；最新 PPT 报告三个包已锚定，仍需核对对应文件、网络、合约与交易凭据，统一仓库状态。
+**回测记录上链与链上核验是我们项目的功能之一，由 ZHANG Xinyue 主导。** Hardhat 工程及本地验证已接入；三份审计包已在 chainlab 存证，文件指纹、网络、合约和交易凭据已核对，原包通过、修改副本失败、原包再次通过。实际记录与证据见 [测试网结果](docs/chainlab-results.md)。
 
 MA60、EMA20、Williams14 是三个演示案例，用来检验同一研究流程能否支持不同规则。历史收益是案例输出，项目的目标是完善研究流程，并非推荐收益最高的策略。
 
@@ -51,9 +51,43 @@ python final_project/run_record.py record
 docs/                   功能范围、分工、复核和交接
 final_project/          演示案例、行情与成交、验证和分析脚本
 audit/                  原 MA60 v1 审计包与历史生成脚本
-scripts/                待接入 Hardhat 的上链和读链脚本
+scripts/                已接入 Hardhat 的本地与 chainlab 存证、验证脚本
 presentations/interim/  当前两分钟汇报及讲稿
 archive/                早期实验与讨论，不代表当前结论
 ```
 
-已完成：三案例计算对照、账户检查、结果诊断脚本及审计包。待完成：研究功能界面、实验记录完善、Argo 构建版本复核；链上凭据待核对。详细状态以[项目功能清单](docs/项目功能清单.md)为准。这个仓库是最终协作入口，旧 PPT 已归档。
+已完成：三案例计算对照、账户检查、结果诊断脚本及审计包，Hardhat 接入和三案例 chainlab 存证核验。待完成：研究功能界面、实验记录完善、Argo 构建版本复核；Qiyuan 跨电脑复查和主仓库交付仍待完成。研究功能详见 [项目功能清单](docs/项目功能清单.md)，链上证据见 [测试网结果](docs/chainlab-results.md)。这个仓库是最终协作入口，旧 PPT 已归档。
+
+## File format and reproducibility
+
+Run `python scripts/check-reproducibility.py` to rebuild and compare two full runs.
+See [format rules and version notes](docs/reproducibility.md) for the historical v1 exception and new v2 fingerprints.
+
+## Local contract integration
+
+The registry, parameterized audit tools and local tests are integrated.
+Run `bun run build`, `bun run typecheck`, `bun run test`, then `bun run demo:local`.
+The three-case demo uses an ephemeral local simulated chain; these are not testnet proofs.
+See [local chain guide and source attribution](docs/chain-integration.md) and
+[executed check results](docs/evidence/2026-11-20-chain-integration.json).
+
+## Chainlab commands
+
+See [step-by-step testnet commands](docs/chainlab-commands.md). Start with
+`bun run chainlab:check` (read-only). Only `chainlab:anchor` sends a transaction.
+Current package hashes and the existing registry are pinned in scripts/chainlab-manifest.json.
+
+## Verified chainlab results
+
+All three current audit packages have confirmed chainlab proofs. Original files
+pass, modified copies fail, and originals pass again (9 independent CLI checks).
+See [records, transactions and proof files](docs/chainlab-results.md).
+
+## Demo and teammate handoff
+
+See [beginner demonstration and handoff instructions](docs/演示与交接说明.md)
+for read-only verification of all three cases, reproducible tampered copies,
+contribution details and remaining work.
+
+See [file-by-file changes and provenance](docs/文件改动清单.md) for the
+imported contract, new code, teammate-code edits, generated results and format-only changes.

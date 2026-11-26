@@ -1,0 +1,67 @@
+{
+  "date_local": "2026-11-20",
+  "rpc_url": "http://127.0.0.1:8545",
+  "latest_block": 4,
+  "same_genesis_and_contract": true,
+  "ema20_anchor_exit_code": 0,
+  "ema20_verify_exit_code": 0,
+  "williams14_anchor_exit_code": 0,
+  "williams14_verify_exit_code": 0,
+  "proofs": [
+    {
+      "case": "ma60",
+      "proof_file": "build/proofs/ma60.persistent-20261120.proof.json",
+      "original_hash_matches": true,
+      "proof": {
+        "schema": "msbd5017.proof.v1",
+        "chain_id": "31337",
+        "genesis_hash": "0x5ae0ad6ce7bb93200f64ac3ed59cc8a21a92373ace6f0efa755a5359911aa51a",
+        "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "record_id": "0",
+        "transaction_hash": "0x489c5f5e1639e0e92e9900cc2c9734ecde2bf5025387266d115aaa4e59c94b45",
+        "block_number": 2,
+        "block_hash": "0x90b2f002e87de72566a6dd954a3e49632c3f2c4fe3c42e6c01da7204730ed125",
+        "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "file": "final_project/cases/ma60/audit_package.json",
+        "sha256": "0xf77738d1a27e5e3b08688d8cb525a9ea4c74fa46b069cedf0797c394ab8cddec"
+      }
+    },
+    {
+      "case": "ema20",
+      "proof_file": "build/proofs/ema20.persistent-20261120.proof.json",
+      "original_hash_matches": true,
+      "proof": {
+        "schema": "msbd5017.proof.v1",
+        "chain_id": "31337",
+        "genesis_hash": "0x5ae0ad6ce7bb93200f64ac3ed59cc8a21a92373ace6f0efa755a5359911aa51a",
+        "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "record_id": "1",
+        "transaction_hash": "0x77c419dd155257b1697f61903d27b2530ab29da64ee18bee64f5ff31eb7bad5f",
+        "block_number": 3,
+        "block_hash": "0x703b078f491b348ac9eef7061e40bc279086e02df564eab6cfef2e5b756c7c73",
+        "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "file": "final_project/cases/ema20/audit_package.json",
+        "sha256": "0x4f733e866989353c63674aa64071277411c6ac9451c0af1e997a7573790ae920"
+      }
+    },
+    {
+      "case": "williams14",
+      "proof_file": "build/proofs/williams14.persistent-20261120.proof.json",
+      "original_hash_matches": true,
+      "proof": {
+        "schema": "msbd5017.proof.v1",
+        "chain_id": "31337",
+        "genesis_hash": "0x5ae0ad6ce7bb93200f64ac3ed59cc8a21a92373ace6f0efa755a5359911aa51a",
+        "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "record_id": "2",
+        "transaction_hash": "0x632abc1ac96ebc6f554c47436721b2b78b47738bf8966410dffd4762b8ba05f0",
+        "block_number": 4,
+        "block_hash": "0xcb2aad7daab15947f93d292439a2e4f8036f239e09e1a815a9a00cf482a07217",
+        "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "file": "final_project/cases/williams14/audit_package.json",
+        "sha256": "0x8e29d79d04e4c1cf21ec5ee8d18a3f223f1e96fc777eb7b7c9ae2b82451871a9"
+      }
+    }
+  ],
+  "scope": "Persistent local node only. No testnet transactions, commits or pushes."
+}

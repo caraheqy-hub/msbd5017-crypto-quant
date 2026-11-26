@@ -1,0 +1,12 @@
+{
+  "rpc_url": "https://testnet.chainlab.fun",
+  "chain_id": "31337",
+  "genesis_hash": "0x02f0e710b8cd892a4c07c37a9692f3fe855d4fd6e23163f3ab6e40aa3895df24",
+  "contract_address": "0x35887245652F53eA72c8D6a9FD595c9bE78Cb284",
+  "expected_account": "0x715790f90491a4f8b843c52ac182e1d6bea43a88",
+  "packages": {
+    "ma60": "f77738d1a27e5e3b08688d8cb525a9ea4c74fa46b069cedf0797c394ab8cddec",
+    "ema20": "4f733e866989353c63674aa64071277411c6ac9451c0af1e997a7573790ae920",
+    "williams14": "8e29d79d04e4c1cf21ec5ee8d18a3f223f1e96fc777eb7b7c9ae2b82451871a9"
+  }
+}

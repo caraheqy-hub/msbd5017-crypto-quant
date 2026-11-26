@@ -7089,11 +7089,11 @@
   },
   "nav_merkle_root": "b4763552770ca1b7a0ce9a29ecc1f00eea900ad46aeb642455d106545ae4a2e0",
   "provenance": {
-    "builder_sha256": "507ec1cee9e9ec2424586cdc0c6a4095fe58493840bdb756edf845101cc3b45b",
+    "builder_sha256": "ca18ebc2d3855076328aefd9e67b0cbd7edea7c49a065b0640def1769f9f705e",
     "engine_commit_reported": "23f1418",
     "engine_commit_status": "历史记录所报版本；尚未在本仓库从该提交重跑引擎",
     "engine_config_sha256": "cc2551ad709794c8dcc3d81deb3d65f160fb938391297f43c7f41540de52f5a4",
-    "indicator_config_sha256": "a98e3e96a0f241fd921b3ac9e30d7b061303f9321fd0b39ae8b895d4a6f6a04e",
+    "indicator_config_sha256": "fb84d5f6395773498f01d92c5db0fa6b3e6b6d2d204800c89cedc863fbbae2a8",
     "ledger_sha256": "8401b143097390435702ac48a1353f4e7ff6d47080c2de0409048632ff7952f0",
     "source_run": "results_utilfix/20261118_234959/Search",
     "strategy_source_sha256": "ba074f0bcf27707e409b8d2682abfd4d4a70f2efa66f100ef699230651a9600c",

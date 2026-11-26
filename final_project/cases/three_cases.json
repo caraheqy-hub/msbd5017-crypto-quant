@@ -2,7 +2,7 @@
   "ma60": {
     "input": {
       "price_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
-      "audit_package_sha256": "21b7bcacac1a86622fd4e3867afec13f2346d13bef6aa34aba02d2201dddfcc5",
+      "audit_package_sha256": "f77738d1a27e5e3b08688d8cb525a9ea4c74fa46b069cedf0797c394ab8cddec",
       "start": "2022-01-01",
       "end": "2026-10-31",
       "total_days": 1765
@@ -78,7 +78,7 @@
   "ema20": {
     "input": {
       "price_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
-      "audit_package_sha256": "e3512064f0070b73c6d8ca493084cf561e0a3e56c74f3fec002085a3d5a43d2a",
+      "audit_package_sha256": "4f733e866989353c63674aa64071277411c6ac9451c0af1e997a7573790ae920",
       "start": "2022-01-01",
       "end": "2026-10-31",
       "total_days": 1765
@@ -154,7 +154,7 @@
   "williams14": {
     "input": {
       "price_sha256": "cbea5398f8947a3b4718029e44819828c7ac30e5919ae8373ebb2524cee1c610",
-      "audit_package_sha256": "a6ab543ef77a0ab6066ed76e85e85ab8e95aa9bbd55b1d17bb9e10ddb7fd8fa5",
+      "audit_package_sha256": "8e29d79d04e4c1cf21ec5ee8d18a3f223f1e96fc777eb7b7c9ae2b82451871a9",
       "start": "2022-01-01",
       "end": "2026-10-31",
       "total_days": 1765

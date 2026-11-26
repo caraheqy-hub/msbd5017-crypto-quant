@@ -1,0 +1,25 @@
+{
+  "date_local": "2026-11-20",
+  "build_passed": true,
+  "typecheck_passed": true,
+  "local_tests": {
+    "solidity": 8,
+    "mocha": 7,
+    "total": 15
+  },
+  "live_readonly_preflight": {
+    "case": "ma60",
+    "passed": true,
+    "existing_record": null,
+    "existing_proof_file": false
+  },
+  "executed_chainlab_anchor": false,
+  "loaded_private_key": false,
+  "transactions_sent": 0,
+  "git_commits_or_pushes": 0,
+  "package_hashes": {
+    "ma60": "f77738d1a27e5e3b08688d8cb525a9ea4c74fa46b069cedf0797c394ab8cddec",
+    "ema20": "4f733e866989353c63674aa64071277411c6ac9451c0af1e997a7573790ae920",
+    "williams14": "8e29d79d04e4c1cf21ec5ee8d18a3f223f1e96fc777eb7b7c9ae2b82451871a9"
+  }
+}

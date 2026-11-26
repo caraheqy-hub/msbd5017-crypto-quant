@@ -1,0 +1,96 @@
+{
+  "date_local": "2026-11-20",
+  "timezone": "Asia/Shanghai",
+  "source_repository": "https://github.com/Adazhangdada/group27_trade.git",
+  "source_commit": "afd1a12aea32862719fb65094339335393635ad1",
+  "source_files": [
+    "contracts/BacktestRegistry.sol",
+    "ignition/modules/BacktestRegistry.ts"
+  ],
+  "checks": [
+    {
+      "command": "bun hardhat build",
+      "exit_code": 0
+    },
+    {
+      "command": "bun tsc --noEmit",
+      "exit_code": 0
+    },
+    {
+      "command": "bun hardhat test --network hardhatMainnet",
+      "exit_code": 0,
+      "solidity_tests": 8,
+      "mocha_tests": 4,
+      "fuzz_runs_per_fuzz_test": 256
+    },
+    {
+      "command": "bun run demo:local",
+      "exit_code": 0
+    }
+  ],
+  "scope": "Local simulated chain only; no testnet transactions, commits or pushes executed by this integration",
+  "demo": {
+    "network": "in-process simulated chain; ephemeral",
+    "results": [
+      {
+        "case": "ma60",
+        "original_passed": true,
+        "tamper_detected": true,
+        "original_unchanged": true,
+        "proof": {
+          "schema": "msbd5017.proof.v1",
+          "chain_id": "31337",
+          "genesis_hash": "0x83e72cd6e71143214355a0dbc50e9fcfb22ccf773ec25a62c8e3e2ad04f99b4e",
+          "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+          "record_id": "0",
+          "transaction_hash": "0xfd119e53997b45623645fef1f81cc1da6972f34195d2ea57e92056a54bc74ffc",
+          "block_number": 2,
+          "block_hash": "0x0a1cf94938c63073141440a99d5a62def44f77bc0f6b46ea13f128fac9095523",
+          "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "file": "final_project/cases/ma60/audit_package.json",
+          "sha256": "0xf77738d1a27e5e3b08688d8cb525a9ea4c74fa46b069cedf0797c394ab8cddec"
+        }
+      },
+      {
+        "case": "ema20",
+        "original_passed": true,
+        "tamper_detected": true,
+        "original_unchanged": true,
+        "proof": {
+          "schema": "msbd5017.proof.v1",
+          "chain_id": "31337",
+          "genesis_hash": "0x83e72cd6e71143214355a0dbc50e9fcfb22ccf773ec25a62c8e3e2ad04f99b4e",
+          "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+          "record_id": "1",
+          "transaction_hash": "0xbf46fffa47515638538a56274f7a7dc528596dae7be0c92443fb0295e834fb4d",
+          "block_number": 3,
+          "block_hash": "0x8321082fd040fdcf58035ba92a84fc024c9183533686087bce557abae5f4db8c",
+          "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "file": "final_project/cases/ema20/audit_package.json",
+          "sha256": "0x4f733e866989353c63674aa64071277411c6ac9451c0af1e997a7573790ae920"
+        }
+      },
+      {
+        "case": "williams14",
+        "original_passed": true,
+        "tamper_detected": true,
+        "original_unchanged": true,
+        "proof": {
+          "schema": "msbd5017.proof.v1",
+          "chain_id": "31337",
+          "genesis_hash": "0x83e72cd6e71143214355a0dbc50e9fcfb22ccf773ec25a62c8e3e2ad04f99b4e",
+          "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+          "record_id": "2",
+          "transaction_hash": "0x80b99303756efd5786631edbced2933599b7fc38425264aa3e679f7dfac511bd",
+          "block_number": 4,
+          "block_hash": "0x509e786972a07febbeb9512ea8851b7d475f013176f0bfa8d902d50852e76e94",
+          "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "file": "final_project/cases/williams14/audit_package.json",
+          "sha256": "0x8e29d79d04e4c1cf21ec5ee8d18a3f223f1e96fc777eb7b7c9ae2b82451871a9"
+        }
+      }
+    ]
+  },
+  "demo_directory": "build/local-demo/2026-11-19T19-17-31-796Z",
+  "limitation": "In-process simulated chain ends after demo exits. These proofs are not testnet credentials and cannot be queried after process exit."
+}

@@ -1,0 +1,34 @@
+{
+  "name": "msbd5017-crypto-quant",
+  "version": "1.0.0",
+  "type": "module",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^4.2.0",
+    "@nomicfoundation/hardhat-ignition": "^3.1.8",
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "^4.0.0",
+    "@types/chai": "^5.2.3",
+    "@types/chai-as-promised": "^8.0.1",
+    "@types/mocha": ">=10.0.10",
+    "@types/node": "^22.8.5",
+    "chai": "^6.2.2",
+    "ethers": "^6.14.0",
+    "forge-std": "foundry-rs/forge-std#v1.17.0",
+    "hardhat": "^3.22.0",
+    "mocha": "^12.0.0",
+    "typescript": "~6.0.3"
+  },
+  "private": true,
+  "scripts": {
+    "build": "hardhat build",
+    "typecheck": "tsc --noEmit",
+    "test": "hardhat test --network hardhatMainnet",
+    "demo:local": "hardhat run scripts/demo-local.ts --network hardhatMainnet",
+    "node:local": "hardhat node",
+    "anchor:local": "hardhat run scripts/anchor-audit.ts --network localhost",
+    "verify:local": "hardhat run scripts/verify-audit.ts --network localhost",
+    "chainlab:check": "hardhat run scripts/check-chainlab.ts --network chainlab",
+    "chainlab:account": "hardhat run scripts/account-chainlab.ts --network chainlab",
+    "chainlab:anchor": "hardhat run scripts/anchor-chainlab.ts --network chainlab",
+    "chainlab:verify": "hardhat run scripts/verify-chainlab.ts --network chainlab"
+  }
+}

@@ -90,7 +90,7 @@ def main():
     data = pd.read_parquet(prices)
     reports = []
     for case in ("ma60", "ema20", "williams14"):
-        config = json.loads((HERE / f"input/ledgers/{case}.yaml").read_text())
+        config = json.loads((HERE / f"input/ledgers/{case}.yaml").read_text(encoding="utf-8"))
         # 模拟阶段不读取成交账本、审计包或已有净值。
         fills, nav, rejects = simulate(data, config)
         actual = pd.read_parquet(HERE / f"input/ledgers/{case}.parquet")
@@ -122,7 +122,7 @@ def main():
         reference_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         price_sha256=hashlib.sha256(prices.read_bytes()).hexdigest(), cases=reports)
     (HERE / "cases/independent_validation.json").write_text(
-        json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":
