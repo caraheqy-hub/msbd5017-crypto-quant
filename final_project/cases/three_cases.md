@@ -69,4 +69,4 @@ MA60 在近期下跌状态大多持有现金；EMA20 在该状态仍有少量持
 
 三组已完成账本与每日损益核对；另用 independent_replay.py 从行情独立计算指标、信号及交易，逐笔对齐结果见 independent_validation.json。计算一致性不等于独立样本外有效性，也不替代 Argo 构建版本与完整测试的复核。
 
-每个案例目录的 audit_package.json 保存交易与净值；case_summary.json 保存包哈希和对账误差。新包为 v2，记录了来源账本和配置指纹，哈希与原 MA60 v1 包不同；均尚未取得链上凭据。
+每个案例目录的 audit_package.json 保存交易与净值；case_summary.json 保存包哈希和对账误差。当前已确认的三个 v2 包已在 chainlab 存证并通过原包与篡改核验，凭据见 proofs/chainlab/，详情见 [测试网结果](../../docs/chainlab-results.md)。v2 与历史 MA60 v1 包的指纹不同；以后重建或修改文件后须重新核对，不能据此认为任意新输出已存证。

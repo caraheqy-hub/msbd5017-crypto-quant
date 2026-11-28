@@ -56,7 +56,7 @@ presentations/interim/  当前两分钟汇报及讲稿
 archive/                早期实验与讨论，不代表当前结论
 ```
 
-已完成：三案例计算对照、账户检查、结果诊断脚本及审计包，Hardhat 接入和三案例 chainlab 存证核验。待完成：研究功能界面、实验记录完善、Argo 构建版本复核；Qiyuan 跨电脑复查和主仓库交付仍待完成。研究功能详见 [项目功能清单](docs/项目功能清单.md)，链上证据见 [测试网结果](docs/chainlab-results.md)。这个仓库是最终协作入口，旧 PPT 已归档。
+已完成：三案例计算对照、账户检查、结果诊断脚本及审计包，Hardhat 接入和三案例 chainlab 存证核验。待完成：研究功能界面、实验记录完善、Argo 构建版本复核；存证工程已通过 [PR #1](https://github.com/caraheqy-hub/msbd5017-crypto-quant/pull/1) 合入主仓库；Qiyuan 跨电脑复查结果仍待确认。研究功能详见 [项目功能清单](docs/项目功能清单.md)，链上证据见 [测试网结果](docs/chainlab-results.md)。这个仓库是最终协作入口，旧 PPT 已归档。
 
 ## File format and reproducibility
 
